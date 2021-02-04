@@ -70,7 +70,7 @@ export default {
 
 #Likedproduit{
   color: blue;
-  font-size: 32px;
+  font-size: 31px;
 }
 #bloctext{
 width: 500px;
