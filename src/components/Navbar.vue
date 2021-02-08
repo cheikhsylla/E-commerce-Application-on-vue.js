@@ -20,7 +20,9 @@
         </v-btn>
 
         <v-btn icon router to="/liked" color="red">
-          <v-icon>mdi-heart</v-icon>
+          <v-badge bordered  >
+            <v-icon>mdi-heart</v-icon>
+          </v-badge>
         </v-btn>
 
 
