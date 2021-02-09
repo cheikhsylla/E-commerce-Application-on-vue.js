@@ -5,12 +5,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    count:2,
     cart:[],
   },
   mutations: {
+    // add an article in the cart
     increment (state,payload) {
       this.state.cart.push(payload)
+    },
+    // Remove an article in the cart
+    Deincrement (state,payload) {
+      this.state.cart=this.state.cart.filter(item => item !== payload)
     }
   },
   actions:{
@@ -18,7 +22,13 @@ export default new Vuex.Store({
 
       setTimeout(function(){
           context.commit('increment',payload)
-      },2000)
+      },1500)
+    },
+    Deincrement(context,payload){
+
+      setTimeout(function(){
+          context.commit('Deincrement',payload)
+      },1500)
     }
   }
 })

@@ -10,7 +10,7 @@
         v-for="(product,index) in $store.state.cart" :key="index"
       >
             <v-card
-              :loading="loading"
+              
               class="mx-auto my-12"
               max-width="374"
               
@@ -39,8 +39,8 @@
                     <span class="subheading mr-2" id="price">{{product.price}}€</span>
                     </v-btn>
                     <v-spacer></v-spacer>
-                  <v-btn icon color="blue">
-                    <v-icon>mdi-cart</v-icon>
+                  <v-btn icon color="blue" @click="removetocart(product)">
+                    <v-icon>mdi-delete</v-icon>
                   </v-btn>
                 </v-card-actions>
                 
@@ -58,6 +58,12 @@
 
 export default {
   name: 'Liked',
+  methods: {
+    removetocart:function(number){
+       this.$store.dispatch('Deincrement',number)
+     },
+    
+  },
   
 }
 </script>

@@ -18,7 +18,7 @@
         v-for="(product, index) in filteredList" :key="index"
       >
             <v-card
-              :loading="loading"
+            
               class="mx-auto my-12"
               max-width="374"
               
@@ -39,7 +39,7 @@
                 <v-card-actions>
                   
 
-                  <v-btn icon color="red" @click="runtest(product)" >
+                  <v-btn icon color="red" @click="addtocart(product)" >
                     <v-icon >mdi-heart</v-icon>
                   </v-btn>
                     <v-spacer></v-spacer>
@@ -81,20 +81,10 @@ export default {
   },
   methods: {
        
-     addToLiked:function(product){
-         this.cart.push({
-             id:product.id,
-             img:product.img,
-             description:product.description,
-             price:product.price,
-             quantity:1
-         })
-     },
-     runtest:function(number){
+    
+     addtocart:function(number){
        this.$store.dispatch('increment',number)
-     }
-    
-    
+     },
     },
     computed: {
         filteredList(){

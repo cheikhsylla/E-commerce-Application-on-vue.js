@@ -20,8 +20,9 @@
         </v-btn>
 
         <v-btn icon router to="/liked" color="red">
-          <v-badge bordered  >
-            <v-icon>mdi-heart</v-icon>
+                    <v-icon>mdi-heart</v-icon>
+
+          <v-badge bordered  v-if="$store.state.cart.length>0" :content="$store.state.cart.length">
           </v-badge>
         </v-btn>
 
