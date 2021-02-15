@@ -12,11 +12,11 @@
             <v-card
               
               class="mx-auto my-12"
-              max-width="374"
+              max-width="354"
               
             >
                 <v-img
-                  height="250"
+                  height="499"
                   :src="product.img"
                   class="white--text align-end"
                   gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
