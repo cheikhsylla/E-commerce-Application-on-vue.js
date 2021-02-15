@@ -1,4 +1,5 @@
 <template>
+<div>
 <v-container>
 <v-container>
 <v-row>
@@ -15,16 +16,16 @@
   <div class="home">
     <v-row dense>
       <v-col
-        v-for="(product, index) in filteredList" :key="index"
+        v-for="(product, index) in pageOfItems" :key="index"
       >
             <v-card
             
               class="mx-auto my-12"
-              max-width="374"
+              max-width="354"
               
             >
                 <v-img
-                  height="250"
+                  height="499"
                   :src="product.img"
                   class="white--text align-end"
                   gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
@@ -62,6 +63,10 @@
         </div>
   </div>
 </v-container>
+<div class="text-center">
+              <jw-pagination :items="filteredList" @changePage="onChangePage" :pageSize='6'></jw-pagination>
+        </div>
+</div>
 
 </template>
 
@@ -76,6 +81,7 @@ export default {
       products,
       cart:[],
       searchkey:'',
+      pageOfItems: [],
       
     }
   },
@@ -85,6 +91,10 @@ export default {
      addtocart:function(number){
        this.$store.dispatch('increment',number)
      },
+     onChangePage(pageOfItems) {
+            // update page of items
+            this.pageOfItems = pageOfItems;
+        }
     },
     computed: {
         filteredList(){
