@@ -1,40 +1,31 @@
 <template>
 <v-container>
 <div id="bloctext">
-<span id="Likedproduit" > Les produits que vous avez aimés !</span>
+
 </div>
   <div class="home">
     <v-row dense>
       
       <v-col
-        v-for="(product,index) in $store.state.cart" :key="index"
+        v-for="(product,index) in $store.state.shopping" :key="index"
       >
             <v-card
               
               class="mx-auto my-12"
-              max-width="354"
-              
+              max-width="200"     
             >
                 <v-img
-                  height="499"
+                  height="100"
                   :src="product.img"
                   class="white--text align-end"
                   gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                 > 
               
                   <v-card-title v-text="product.description"> </v-card-title>
-                  
-                  
-                  
+
                   
                 </v-img>
                 <v-card-actions>
-                  
-
-                  <v-btn icon color="red"  @click="addToShopping(product)">
-                    <v-icon >mdi-cart</v-icon>
-                  </v-btn>
-                    <v-spacer></v-spacer>
                     <v-btn id="buttonprice" color="blue" disabled>
                     <span class="subheading mr-2" id="price">{{product.price}}€</span>
                     </v-btn>
@@ -45,7 +36,12 @@
                 </v-card-actions>
                 
             </v-card>
+            <v-divider/>
       </v-col>
+        
+      <span id="totalPrice"> Total Price: {{$store.state.totalPrice}}€</span>
+
+      
     </v-row>
     
   </div>
@@ -53,39 +49,34 @@
   
 </template>
 
+
 <script>
-
-
 export default {
-  name: 'Liked',
-  methods: {
+    name:'ListOfShopping',
+    data() {
+        return {
+           
+        }
+    },
+    methods: {
     removetocart:function(number){
-       this.$store.dispatch('Deincrement',number)
+       this.$store.dispatch('Deincrementbis',number)
      },
-     addToShopping (cart){
-        this.$store.dispatch('incrementbis',cart);
-      }
     
   },
-  
-  
 }
 </script>
 
-<style scoped>
+<style>
 #price{
     color:green;
     font-weight: bold;
   }
-
-#Likedproduit{
-  color: blue;
-  font-size: 31px;
-}
-#bloctext{
-width: 500px;
+  #totalPrice{
+  color:white;
+  font-weight: bolder;
   margin: 0 auto;
-
-}
+  background-color: blue;
+  }
 
 </style>

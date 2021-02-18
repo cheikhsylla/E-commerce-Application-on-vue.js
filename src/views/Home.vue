@@ -48,7 +48,7 @@
                             <span class="subheading mr-2" id="price">{{product.price}}€</span>
                             </v-btn>
                             <v-spacer></v-spacer>
-                          <v-btn icon color="blue">
+                          <v-btn icon color="blue" @click="addToShopping(product)">
                             <v-icon>mdi-cart</v-icon>
                           </v-btn>
                         </v-card-actions>
@@ -85,16 +85,41 @@ export default {
       
     }
   },
+  components:{
+  
+  },
   methods: {
        
     
      addtocart:function(number){
-       this.$store.dispatch('increment',number)
+       this.$store.dispatch('increment',number);
+       //show alert message 
+          
+            //Display alert message
+            this.$swal({
+              position: 'center',
+              icon: 'success',
+              title: 'Article ajouté dans favoris',
+              showConfirmButton: false,
+              timer: 1500
+              });
+      
      },
      onChangePage(pageOfItems) {
             // update page of items
             this.pageOfItems = pageOfItems;
-        }
+        },
+      addToShopping (cart){
+        this.$store.dispatch('incrementbis',cart);
+        //Display alert message
+            this.$swal({
+              position: 'center',
+              icon: 'success',
+              title: 'Article ajouté dans Panier',
+              showConfirmButton: false,
+              timer: 1500
+              });
+      }
     },
     computed: {
         filteredList(){

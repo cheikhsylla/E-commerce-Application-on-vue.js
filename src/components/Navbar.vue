@@ -9,7 +9,7 @@
       <v-app-bar-nav-icon class="mt-5" @click="drawer=!drawer"></v-app-bar-nav-icon>
       <div class="logo">
         <router-link to="/">
-        <v-img class="logo1" src="@/assets/travel-etude.png"></v-img>
+        <v-img class="logo1" src="@/assets/travel.png"></v-img>
         </router-link>
       </div>
       <v-spacer></v-spacer>
@@ -40,7 +40,7 @@
   
   </v-app-bar>
 
-  <v-navigation-drawer v-if="drawer" app color="#FAFAFA">
+  <v-navigation-drawer v-if="drawer" app color="#FAFAFA" >
     <v-list class="mt-16">
 
       <v-list-item router to="/">
@@ -69,27 +69,61 @@
 
     <div class="logo_draw">
         <router-link to="/about">
-        <v-img class="logo1" src="@/assets/travel-etude.png"></v-img>
+        <v-img class="logo1" src="@/assets/travel.png"></v-img>
         </router-link>
     </div>
     <div class="design1">
-        <p class="design2"> Design And Developped by </p>
+        <p class="design2"> Design & Developed by <strong class="author">Cheikh SYLLA</strong></p>
         <p class="design3">Cheikh SYLLA</p>
     </div>
     
     
   </v-navigation-drawer>
+  <!-- shopping card items -->
+      
+
+    <v-navigation-drawer
+      absolute
+      
+      right
+      class="ert"
+      height="600px"
+      v-if="$store.state.shopping.length!=0"
+    >
+    
+    <template v-slot:prepend>
+        <v-list-item two-line>
+    
+          <v-list-item-content>
+           <img src="@/assets/travel.png" width="100px">
+           <v-list-item-title class="text-center green " id="cart-list">Shopping cart list</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </template>
+
+      <v-divider></v-divider>
+        <ListOfShopping v-if="$store.state.shopping.length!=0"/>
+
+    </v-navigation-drawer>
+
+   
 </v-container>
 </template>
 
 <script>
+import ListOfShopping from '@/components/ListOfShopping.vue'
 export default {
   name:'Navbar',
+  components:{
+    ListOfShopping
+  },
   data(){
     return{
-      drawer:false
+      drawer:false,
+     
     }
-  }
+  },
+ 
 }
 </script>
 
@@ -123,6 +157,16 @@ export default {
     font-weight: bold;
     color: blue;
   }
-  
+  .ert{
+  margin-top: 120px;
+  position: fixed;
+  }
+  #cart-list{
+  font-weight: bold;
+  color: white;
+  }
+  .author{
+  color: blue;
+  }
 
 </style>
